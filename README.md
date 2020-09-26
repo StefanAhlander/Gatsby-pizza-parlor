@@ -1,3 +1,3 @@
 # Pizza-Parlor
 
-Fullstack application using Gatsby etc.
+Fullstack application using Gatsby, Sanity, Graphql etc.
