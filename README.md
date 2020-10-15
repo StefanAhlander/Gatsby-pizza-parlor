@@ -1,3 +1,3 @@
-# Pizza-Parlor
+i# Pizza-Parlor
 
-Fullstack application using Gatsby, Sanity, Graphql etc.
+Fullstack application using Gatsby, Sanity, Graphql, Serverless functions using Netlify etc.
