@@ -36,6 +36,15 @@ const transporter = nodemailer.createTransport({
 exports.handler = async (event, context) => {
   const body = JSON.parse(event.body);
 
+  if (body.mapleSyrup) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: 'Beep Boop Tzzzt Good bye! Error 34234',
+      }),
+    };
+  }
+
   const requiredFields = ['email', 'name', 'order'];
 
   for (const field of requiredFields) {
@@ -48,6 +57,15 @@ exports.handler = async (event, context) => {
         }),
       };
     }
+  }
+
+  if (!body.order.length) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: `Why would you order nothing.`,
+      }),
+    };
   }
 
   const info = await transporter.sendMail({

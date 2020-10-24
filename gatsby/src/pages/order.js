@@ -18,6 +18,7 @@ export default function OrderPage({ data }) {
   const { values, updateValues } = useForm({
     name: '',
     email: '',
+    mapleSyrup: '',
   });
   const {
     order,
@@ -40,7 +41,7 @@ export default function OrderPage({ data }) {
     <>
       <SEO title="Order a pizza" />
       <OrderStyles onSubmit={submitOrder}>
-        <fieldset>
+        <fieldset disabled={loading}>
           <legend>Your Info</legend>
           <label htmlFor="name">Name</label>
           <input
@@ -58,8 +59,16 @@ export default function OrderPage({ data }) {
             value={values.email}
             onChange={updateValues}
           />
+          <input
+            type="text"
+            name="mapleSyrup"
+            id="mapleSyrup"
+            className="mapleSyrup"
+            value={values.mapleSyrup}
+            onChange={updateValues}
+          />
         </fieldset>
-        <fieldset className="menu">
+        <fieldset disabled={loading} className="menu">
           <legend>Menu</legend>
           {pizzas.map((pizza) => (
             <MenuItemStyles key={pizza.id}>
@@ -91,7 +100,7 @@ export default function OrderPage({ data }) {
             </MenuItemStyles>
           ))}
         </fieldset>
-        <fieldset className="order">
+        <fieldset disabled={loading} className="order">
           <legend>Order</legend>
           <PizzaOrder
             order={order}
